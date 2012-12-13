@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new RandomLevel(64, 64);
+		level = new RandomLevel(16, 16);
 
 		addKeyListener(key);
 	}
@@ -95,10 +95,10 @@ public class Game extends Canvas implements Runnable {
 
 	public void update() {
 		key.update();
-		if (key.up) y++;
-		if (key.down) y--;
-		if (key.left) x++;
-		if (key.right) x--;
+		if (key.up) y--;
+		if (key.down) y++;
+		if (key.left) x--;
+		if (key.right) x++;
 	}
 
 	public void render() {
