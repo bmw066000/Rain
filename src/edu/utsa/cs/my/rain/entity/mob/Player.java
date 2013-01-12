@@ -1,10 +1,13 @@
 package edu.utsa.cs.my.rain.entity.mob;
 
+import edu.utsa.cs.my.rain.graphics.Screen;
+import edu.utsa.cs.my.rain.graphics.Sprite;
 import edu.utsa.cs.my.rain.input.Keyboard;
 
 public class Player extends Mob {
 	
 	private Keyboard input;
+	
 	
 	public Player(Keyboard input) {
 		this.input = input;
@@ -26,7 +29,8 @@ public class Player extends Mob {
 		if (xa != 0 || ya != 0) move(xa, ya);
 	}
 	
-	public void render() {
+	public void render(Screen screen) {
+		screen.renderPlayer(x, y, Sprite.player0);
 	}
 
 }
