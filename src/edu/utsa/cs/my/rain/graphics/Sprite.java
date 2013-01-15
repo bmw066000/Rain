@@ -12,9 +12,11 @@ public class Sprite {
 	
 	public static Sprite player_forward = new Sprite(32, 0, 6, SpriteSheet.tiles);
 	public static Sprite player_backward = new Sprite(32, 2, 6, SpriteSheet.tiles);
-	public static Sprite player_left = new Sprite(32, 3, 6, SpriteSheet.tiles);
 	public static Sprite player_side = new Sprite(32, 1, 6, SpriteSheet.tiles);
 	
+	public static Sprite player_forward_1 = new Sprite(32, 0, 7, SpriteSheet.tiles);
+	public static Sprite player_backward_1 = new Sprite(32, 2, 7, SpriteSheet.tiles);
+	public static Sprite player_side_1 = new Sprite(32, 1, 7, SpriteSheet.tiles);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
