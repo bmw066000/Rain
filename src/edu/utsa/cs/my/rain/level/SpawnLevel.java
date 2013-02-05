@@ -9,13 +9,12 @@ import edu.utsa.cs.my.rain.level.tile.Tile;
 
 public class SpawnLevel extends Level {
 
-	private Tile[] tiles;
 	private int[] levelPixels;
-	
+
 	public SpawnLevel(String path) {
 		super(path);
 	}
-	
+
 	protected void loadLevel(String path) {
 		try {
 			BufferedImage image = ImageIO.read(SpawnLevel.class.getResource(path));
@@ -28,7 +27,7 @@ public class SpawnLevel extends Level {
 			System.out.println("Exception! Could not load level file!");
 		}
 	}
-	
+
 	// Grass = 0xFF00
 	// Flower = 0xFFFF00
 	// Rock = 0x7F7F00

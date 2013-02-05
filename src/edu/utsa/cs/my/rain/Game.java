@@ -13,7 +13,7 @@ import edu.utsa.cs.my.rain.entity.mob.Player;
 import edu.utsa.cs.my.rain.graphics.Screen;
 import edu.utsa.cs.my.rain.input.Keyboard;
 import edu.utsa.cs.my.rain.level.Level;
-import edu.utsa.cs.my.rain.level.RandomLevel;
+import edu.utsa.cs.my.rain.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +42,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new RandomLevel(64, 64);
+		level = new SpawnLevel("/textures/level.png");
 		player = new Player(key);
 
 		addKeyListener(key);
