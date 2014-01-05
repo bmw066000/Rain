@@ -11,6 +11,7 @@ public class SpawnLevel extends Level {
 		super(path);
 	}
 
+	@Override
 	protected void loadLevel(String path) {
 		try {
 			BufferedImage image = ImageIO.read(SpawnLevel.class.getResource(path));
@@ -27,6 +28,7 @@ public class SpawnLevel extends Level {
 	// Grass = 0xFF00
 	// Flower = 0xFFFF00
 	// Rock = 0x7F7F00
+	@Override
 	protected void generateLevel() {
 	}
 

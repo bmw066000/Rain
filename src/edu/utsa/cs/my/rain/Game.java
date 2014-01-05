@@ -1,7 +1,9 @@
 package edu.utsa.cs.my.rain;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -12,15 +14,16 @@ import javax.swing.JFrame;
 import edu.utsa.cs.my.rain.entity.mob.Player;
 import edu.utsa.cs.my.rain.graphics.Screen;
 import edu.utsa.cs.my.rain.input.Keyboard;
+import edu.utsa.cs.my.rain.input.Mouse;
 import edu.utsa.cs.my.rain.level.Level;
-import edu.utsa.cs.my.rain.level.SpawnLevel;
+import edu.utsa.cs.my.rain.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 
-	public static int width = 300;
-	public static int height = width / 16 * 9;
-	public static int scale = 3;
+	private static int width = 300;
+	private static int height = width / 16 * 9;
+	private static int scale = 3;
 	public static String title = "Rain";
 
 	private Thread thread;
@@ -43,11 +46,24 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		key = new Keyboard();
 		level = Level.spawn;
-		player = new Player(16*6, 16*4, key);
-
+		TileCoordinate playerSpawn = new TileCoordinate(19, 62);
+		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
+		player.init(level);
+		
 		addKeyListener(key);
 		
+		Mouse mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 		requestFocus();
+	}
+	
+	public static int getWindowWidth() {
+		return width * scale;
+	}
+	
+	public static int getWindowHeight() {
+		return height * scale;
 	}
 
 	public synchronized void start() {
@@ -99,6 +115,7 @@ public class Game extends Canvas implements Runnable {
 	public void update() {
 		key.update();
 		player.update();
+		level.update();
 	}
 
 	public void render() {
@@ -120,6 +137,8 @@ public class Game extends Canvas implements Runnable {
 
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Verdana", 0, 50));
 		g.dispose();
 		bs.show();
 	}
